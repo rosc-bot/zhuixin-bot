@@ -1,0 +1,17 @@
+name: zhuixin-bot
+services:
+  zhuixin-bot:
+    build: .
+    container_name: zhuixin-bot
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - /home/ubuntu/如昔项目归总/群聊监听服务/data/tg_messages.db:/app/data/tg_messages.db:ro
+    logging:
+      driver: json-file
+      options:
+        max-size: "20m"
+        max-file: "3"
