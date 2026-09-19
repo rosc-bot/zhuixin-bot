@@ -1,0 +1,15 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+target-version = "py311"
+exclude = [
+  ".git",
+  ".venv",
+  "data",
+  ".repair-backup",
+  ".repair_backups",
+  ".deploy-backup",
+  ".deploy_backups",
+]

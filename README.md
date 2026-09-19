@@ -35,6 +35,19 @@ docker compose up -d --build
 docker compose logs -f zhuixin-bot
 ```
 
+## 🧪 开发与回归验证
+
+生产依赖和开发质量工具分离，开发时请安装：
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements-dev.txt
+.venv/bin/python -m pytest -q
+.venv/bin/ruff check .
+```
+
+测试仅从 `tests/` 收集；依赖真实云盘、TMDB 或生产数据库的人工审计脚本统一放在 `tools/`，必须显式运行，绝不在测试收集时访问生产资源。
+
 ## 🛠 技术栈
 
 - **Python 3.11+**

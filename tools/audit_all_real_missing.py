@@ -86,4 +86,6 @@ async def test_all_shows():
     for m in missing_list:
         print(f"• 《{m['title']}》S{m['season']}: 库中存 {m['collected']} 集 / 已播出 {m['aired_total']} 集 (季总共 {m['tmdb_total']} 集) | 缺集: {m['missing'][:10]} {'...' if len(m['missing'])>10 else ''} (待播: {len(m['future'])}集)")
 
-asyncio.run(test_all_shows())
+
+if __name__ == "__main__":
+    asyncio.run(test_all_shows())

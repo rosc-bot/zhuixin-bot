@@ -1,4 +1,5 @@
 import asyncio
+import os
 import aiohttp
 import re
 import urllib.parse
@@ -46,4 +47,6 @@ async def test_search():
                     else:
                         print(f"❌ {t} S{sea}: TMDB search returned 0 results")
 
-asyncio.run(test_search())
+
+if __name__ == "__main__":
+    asyncio.run(test_search())

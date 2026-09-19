@@ -40,4 +40,6 @@ async def test():
     for idx, m in enumerate(missing, start=1):
         print(f"{idx}. 《{m['title']}》第 {m['season']} 季 | 库中已存 {len(m['episodes'])} 集 | 缺集: {m['missing_episodes']} | 原因: {m['reason_text']}")
 
-asyncio.run(test())
+
+if __name__ == "__main__":
+    asyncio.run(test())
