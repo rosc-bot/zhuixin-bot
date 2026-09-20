@@ -68,10 +68,20 @@ def _season_from_folder_name(name: str) -> Optional[int]:
     return {"一": 1, "二": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9, "十": 10, "十一": 11, "十二": 12}.get(raw)
 
 
+_PREVIEW_KEYWORDS = (
+    "预告", "预告片", "花絮", "特报", "前瞻", "pv", "trailer", "teaser", "preview", "片花", "彩蛋", "访谈", "幕后"
+)
+
+def _is_preview_video(filename: str) -> bool:
+    name = str(filename or "").lower()
+    return any(kw in name for kw in _PREVIEW_KEYWORDS)
+
 def _extract_episode_keys(filename: str) -> Set[Tuple[Optional[int], int]]:
     name = str(filename or "")
     ext = "." + name.rsplit(".", 1)[-1].lower() if "." in name else ""
     if ext not in VIDEO_EXTENSIONS:
+        return set()
+    if _is_preview_video(name):
         return set()
 
     keys: Set[Tuple[Optional[int], int]] = set()
